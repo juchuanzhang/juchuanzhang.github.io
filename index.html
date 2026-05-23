@@ -1,209 +1,198 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-
-  
-  <title>Juchuan’s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Juchuan’s Blog">
-<meta property="og:url" content="https://juchuanzhang.github.io/index.html">
-<meta property="og:site_name" content="Juchuan’s Blog">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Juchuan’s Blog">
-  
-    <link rel="alternate" href="/atom.xml" title="Juchuan’s Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juchuan Zhang · 张巨川</title>
+  <meta name="description" content="Personal homepage of Juchuan Zhang, PhD">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Juchuan’s Blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://juchuanzhang.github.io"></form>
-      </div>
-    </div>
+
+<header>
+  <div class="container">
+    <a href="#" class="logo">Juchuan Zhang</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
 </header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-iphone安装旧版本应用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/03/iphone安装旧版本应用/" class="article-date">
-  <time datetime="2019-03-03T13:37:22.000Z" itemprop="datePublished">2019-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/03/iphone安装旧版本应用/">iPhone安装旧版本应用</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天不小心把自己iPhone6上做实验的软件“Physics Toolbox Sensor Suite”升了级，结果发现磁力计的采样率从100Hz变成了10Hz，还不能调，简直智障，所以就想把旧版的软件再装回来。现有的iPhone安装旧版本应用方法的原理主要是通过抓取https流量，在iTunes下载应用时将应用版本号替换为旧版本号，得到旧应用的安装包。这个过程其实就是一个中间人攻击的过程。然而网上的教程都不是很全面，从开始到装好折腾了我两个多小时，踩了不少坑，所以还是有必要写一篇博客分享一下。</p>
-<h2 id="安装旧版本iTunes"><a href="#安装旧版本iTunes" class="headerlink" title="安装旧版本iTunes"></a>安装旧版本iTunes</h2><p>由于iTunes在12.6.3版本后取消了应用商店，无法通过iTunes下载应用，所以必须使用旧版本。这里我用的是12.0.1.26版本。注意iTunes分成32位和64位版本，一定要选择和自己操作系统匹配的版本，否则不能安装。</p>
-<h2 id="在iTunes上登录自己的Apple-ID"><a href="#在iTunes上登录自己的Apple-ID" class="headerlink" title="在iTunes上登录自己的Apple ID"></a>在iTunes上登录自己的Apple ID</h2><p>可能大多数人都觉得这一步应该很简单，我当时也是这么想的。然而我输好ID和密码，按下回车之后就傻眼了。iTunes提示无法登录，我的iPhone6手机上出现了6位安全码，用于登录。但是这个安全码往哪输啊？旧版iTunes没有能输安全码的地方。其实这六位安全码只要<strong>附在密码后面</strong>就ok了。</p>
-<h2 id="安装fiddler"><a href="#安装fiddler" class="headerlink" title="安装fiddler"></a>安装fiddler</h2><p>Fiddler是一个http协议调试代理工具，它能够记录并检查所有你的电脑和互联网之间的http通讯，设置断点，查看所有的“进出”Fiddler的数据（指cookie,html,js,css等文件）。这里我们的“中间人攻击”就是用它来实现的。建议通过<a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener">官网</a>下载安装。</p>
-<h2 id="配置fiddler"><a href="#配置fiddler" class="headerlink" title="配置fiddler"></a>配置fiddler</h2><p>打开Fiddler.exe，点击tools - Options，选择HTTPS选项卡，勾选Capture HTTPS CONNECTs选项和Decrypt HTTPS traffic选项，确认后关闭fiddler<br><img src="/img/oldapp/fiddlerpeizhi.png" alt="fiddler配置"></p>
-<h2 id="安装证书"><a href="#安装证书" class="headerlink" title="安装证书"></a>安装证书</h2><p>使用fiddler可能会出现证书错误的情况，这时候就需要安装一下证书。</p>
-<ol>
-<li>打开cmd</li>
-<li>进入fillder.exe所在目录</li>
-<li>执行下面命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">makecert.exe -r -ss my -n &quot;CN=DO_NOT_TRUST_FiddlerRoot, O=DO_NOT_TRUST, OU=Created by http://www.fiddler2.com&quot; -sky signature -eku 1.3.6.1.5.5.7.3.1 -h 1 -cy authority -a sha1 -m 120 -b 09/05/2012</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>这一步操作转自<a href="https://blog.csdn.net/xc_zhou/article/details/80589828" target="_blank" rel="noopener">周小董</a>的博客。</p>
-<h2 id="截取下载请求"><a href="#截取下载请求" class="headerlink" title="截取下载请求"></a>截取下载请求</h2><ol>
-<li>打开iTunes</li>
-<li>在APP Store找到需要安装的应用<br><img src="/img/oldapp/xiazaiqian.png" alt="需要安装的应用"></li>
-<li>打开fiddler。如果iTunes提示无法验证服务器身份，点继续就行，下同。<br><img src="/img/oldapp/itunestishi.png" alt="无法验证服务器身份提示"></li>
-<li>设置断点。在fiddler左下角里的黑框里输入：<code>bpu MZBuy.woa/wa/buyProduct</code>，按下回车即设置了断点.<br><img src="/img/oldapp/shezhiduandianqian.png" alt="设置断点"></li>
-<li>点击下载应用，这时应该会提示输入AppleID和密码，正常输入就好。</li>
-<li>这时fiddler会触发断点</li>
-<li>在左边的列表中左键点击触发断点的事件<br><img src="/img/oldapp/duandianshijian.png" alt="点击触发断点的事件"></li>
-</ol>
-<h2 id="获得旧应用版本号"><a href="#获得旧应用版本号" class="headerlink" title="获得旧应用版本号"></a>获得旧应用版本号</h2><ol>
-<li>点击“Break on Response”</li>
-<li>点击“Response body is encoded. Click to decode”解密流量</li>
-<li>在右下部分切换至textView选项卡，找到所有版本号。可通过搜索关键字“softwareVersionExternalIdentifiers”找到。</li>
-<li>自行推断想要下载的版本的版本号，把它记下来。<br><img src="/img/oldapp/banbenhao.png" alt="版本号"></li>
-</ol>
-<h2 id="下载旧版本应用"><a href="#下载旧版本应用" class="headerlink" title="下载旧版本应用"></a>下载旧版本应用</h2><ol>
-<li>重新执行截取下载请求中的所有步骤，选择Inspectors - TextView选项卡</li>
-<li>将<code>&lt;key&gt;appExtVrsId&lt;/key&gt;</code>下面的版本号改为旧版本的版本号</li>
-<li>点击绿色的Run to Completion，即可下载旧版安装包</li>
-</ol>
-<h2 id="安装旧版本应用"><a href="#安装旧版本应用" class="headerlink" title="安装旧版本应用"></a>安装旧版本应用</h2><p>下载itools，连接手机，通过安装包安装应用。注意，手机的id必须和iTunes登录的id一致</p>
-
-      
+<section id="hero">
+  <div class="container">
+    <div class="avatar">
+      <span>📸</span>
     </div>
-    <footer class="article-footer">
-      <a data-url="https://juchuanzhang.github.io/2019/03/03/iphone安装旧版本应用/" data-id="cjst2njg50000lkl5ndvksyai" class="article-share-link">Share</a>
-      
-      
-    </footer>
+    <h1>Juchuan Zhang · 张巨川</h1>
+    <div class="subtitle">PhD · Research Scientist @ Company</div>
+    <div class="tagline">
+      Computer Vision | Deep Learning | Embodied AI
+    </div>
+    <div class="social-links">
+      <a href="mailto:your.email@example.com">✉️ Email</a>
+      <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">🎓 Google Scholar</a>
+      <a href="https://github.com/juchuanzhang" target="_blank">🐙 GitHub</a>
+      <a href="https://www.linkedin.com/in/YOUR_ID" target="_blank">🔗 LinkedIn</a>
+      <a href="cv.pdf" target="_blank">📄 CV</a>
+    </div>
   </div>
-  
-</article>
-
-
-  
-
-
 </section>
-        
-          <aside id="sidebar">
-  
-    
 
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
-    </div>
+<section id="about">
+  <div class="container">
+    <h2>About Me</h2>
+    <p>
+      I am a Research Scientist at <strong>[Company Name]</strong>, where I work on
+      <strong>[research area]</strong>. Before that, I received my PhD from
+      <strong>[University Name]</strong> in <strong>[Year]</strong>, advised by
+      Prof. <strong>[Advisor Name]</strong>.
+    </p>
+    <br>
+    <p>
+      My research interests lie in computer vision, deep learning, and embodied AI.
+      I am particularly interested in building intelligent systems that can perceive,
+      reason, and interact with the physical world.
+    </p>
   </div>
+</section>
 
+<section id="experience">
+  <div class="container">
+    <h2>Experience</h2>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
+    <div class="item">
+      <h3>Research Scientist</h3>
+      <div class="meta"><span class="org">Company Name</span> · 20XX – Present</div>
       <ul>
-        
-          <li>
-            <a href="/2019/03/03/iphone安装旧版本应用/">iPhone安装旧版本应用</a>
-          </li>
-        
+        <li>Describe your key contributions and projects here</li>
+        <li>Another important achievement or responsibility</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <h3>Research Intern</h3>
+      <div class="meta"><span class="org">Company / Lab Name</span> · Summer 20XX</div>
+      <ul>
+        <li>Describe your internship work</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <h3>PhD Researcher</h3>
+      <div class="meta"><span class="org">University Name, Lab Name</span> · 20XX – 20XX</div>
+      <ul>
+        <li>Describe your PhD research contributions</li>
       </ul>
     </div>
   </div>
+</section>
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 Juchuan Zhang<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+<section id="education">
+  <div class="container">
+    <h2>Education</h2>
+
+    <div class="item">
+      <h3>PhD in Computer Science</h3>
+      <div class="meta"><span class="org">University Name</span> · 20XX – 20XX</div>
     </div>
+
+    <div class="item">
+      <h3>B.S. in Computer Science</h3>
+      <div class="meta"><span class="org">University Name</span> · 20XX – 20XX</div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="container">
+    <h2>Selected Publications</h2>
+
+    <div class="pub-item">
+      <div class="pub-num">1.</div>
+      <div class="pub-info">
+        <div class="pub-title">Title of Your Paper</div>
+        <div class="pub-authors"><strong>J. Zhang</strong>, A. Coauthor, B. Coauthor</div>
+        <div class="pub-venue">Conference/Journal Name, Year</div>
+        <div class="pub-links">
+          <a href="#">[Paper]</a>
+          <a href="#">[Code]</a>
+          <a href="#">[Project]</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-num">2.</div>
+      <div class="pub-info">
+        <div class="pub-title">Title of Your Paper</div>
+        <div class="pub-authors"><strong>J. Zhang</strong>, A. Coauthor, B. Coauthor</div>
+        <div class="pub-venue">Conference/Journal Name, Year</div>
+        <div class="pub-links">
+          <a href="#">[Paper]</a>
+          <a href="#">[Code]</a>
+          <a href="#">[Project]</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-num">3.</div>
+      <div class="pub-info">
+        <div class="pub-title">Title of Your Paper</div>
+        <div class="pub-authors">A. Coauthor, <strong>J. Zhang</strong>, B. Coauthor</div>
+        <div class="pub-venue">Conference/Journal Name, Year</div>
+        <div class="pub-links">
+          <a href="#">[Paper]</a>
+          <a href="#">[Code]</a>
+          <a href="#">[Project]</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <p>Feel free to reach out via email:</p>
+    <br>
+    <p style="font-size:16px;"><strong>✉️ your.email@example.com</strong></p>
+    <br>
+    <div class="social-links">
+      <a href="mailto:your.email@example.com">✉️ Email</a>
+      <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">🎓 Google Scholar</a>
+      <a href="https://github.com/juchuanzhang" target="_blank">🐙 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section id="visitor-map">
+  <div class="container">
+    <h2>🌍 Visitors</h2>
+    <p>Visitors from around the world</p>
+    <div class="map-container">
+      <!--
+      To add a live visitor map, sign up at https://clustrmaps.com/
+      and paste the embed code here. For example:
+
+      <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=YOUR_SITE_ID"></script>
+      -->
+      <p style="color:#aaa; font-size:13px;">
+        🌐 <a href="https://clustrmaps.com/" target="_blank" style="color:#0f3460;">ClustrMaps</a> widget goes here —<br>
+        sign up free at clustrmaps.com to show a live visitor globe.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Juchuan Zhang. All rights reserved.</p>
   </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
 </body>
 </html>
